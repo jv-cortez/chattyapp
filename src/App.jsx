@@ -6,10 +6,8 @@ class App extends Component {
   render() {
     return (
       <div>
-          <body>
             <MessageList />
             <ChatBar />
-          </body>
       </div>
     );
   }
