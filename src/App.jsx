@@ -1,29 +1,36 @@
 import React, {Component} from 'react';
 import MessageList from './MessageList.jsx';
 import ChatBar from './ChatBar.jsx';
-import Data from '../data.json'; 
+
 
 class App extends Component {
   
   constructor() {
-    super()
-    this.state = Data
-    this.createMessage = this.createMessage.bind(this)
+    super();
+    this.state = {
+      currentUser: {name:''},
+      messages: []
+    };
+    this.addMessage = this.addMessage.bind(this);
   }
-
-
-  createMessage(username, content){
-    const message = {
-      username, content
+  addMessage(username, content){
+    var message = {
+      username:username,
+      content:content
     }
-    const messageList = this.state.messages.concat(message)
-    console.log(messageList)
-    this.setState({
-        username: username,
-        messages: messageList
-      })
+    this.ws.send(JSON.stringify(message));
   }
-
+  componentDidMount() {
+    this.ws = new WebSocket ('ws://localhost:3001');
+    this.ws.onmessage = (event) => { 
+      console.log("event ", event);
+      let messages = [];
+      messages = this.state.messages.concat(JSON.parse(event.data));
+      this.setState({
+        messages: messages
+      })
+    }
+  }
   render() {
     return (
       <div>
@@ -33,7 +40,7 @@ class App extends Component {
         <MessageList posts= {this.state.messages} />
         <ChatBar 
           userName={this.state.currentUser.name} 
-          onNewPost={this.createMessage} 
+          onNewPost={this.addMessage} 
         />
       </div>
     );
