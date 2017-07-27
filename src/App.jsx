@@ -52,6 +52,7 @@ class App extends Component {
       <div>
         <nav className="navbar">
             <a href="/" className="navbar-brand">Chatty</a>
+            <p className="userCount"> X Users online</p>
         </nav>
         <MessageList posts= {this.state.messages} />
         <ChatBar 
