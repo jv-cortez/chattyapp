@@ -4,6 +4,8 @@ import ChatBar from './ChatBar.jsx';
 //need to add anonymous label if a username isn't provided
 //add api??? emojis???
 //change color. this type of orange is gross
+// should scroll down when messages are at the end of the page
+//content should after pressing enter in the content input
 
 class App extends Component {
   
@@ -30,10 +32,10 @@ class App extends Component {
       switch(message.type) {
         case 'postMessage':
           message.type = 'incomingMessage';
-          message.username = this.state.currentUser.name
           break;
         case 'postNotification':
           message.type = 'incomingNotification';
+          //will always say anonymous changed their name to.. instead of referring to the past name
           message.content = this.state.currentUser.name + ' changed their name to ' + message.username;
           break;
         default:
