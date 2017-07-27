@@ -20,7 +20,7 @@ class ChatBar extends Component {
   onPost(keyPressed) {
     const enterPressed = keyPressed.key
     if (enterPressed === 'Enter') {
-      this.props.onNewPost(this.state.user, this.state.content);
+      this.props.onNewPost('postMessage',this.state.user, this.state.content);
     }
   }
   onUserContent(event) {
@@ -31,7 +31,7 @@ class ChatBar extends Component {
   onUserPost(keyPressed) {
     const enterPressed = keyPressed.key;
     if (enterPressed === 'Enter') {
-      this.props.onNewPost(this.state.user, this.state.content);
+      this.props.onNewPost('postNotification',this.state.user);
     }
   }
   render() {

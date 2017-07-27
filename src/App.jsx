@@ -1,33 +1,51 @@
 import React, {Component} from 'react';
 import MessageList from './MessageList.jsx';
 import ChatBar from './ChatBar.jsx';
-
+//need to add anonymous label if a username isn't provided
+//add api??? emojis???
+//change color. this type of orange is gross
 
 class App extends Component {
   
   constructor() {
     super();
     this.state = {
-      currentUser: {name:''},
+      currentUser: {name:'Anonymous'},
       messages: []
     };
     this.addMessage = this.addMessage.bind(this);
   }
-  addMessage(username, content){
+  addMessage(type, username, content){
     var message = {
-      username:username,
-      content:content
+      type: type,
+      username: username,
+      content: content
     }
-    this.ws.send(JSON.stringify(message));
+    this.ws.send(JSON.stringify(message)); //client message
   }
   componentDidMount() {
     this.ws = new WebSocket ('ws://localhost:3001');
     this.ws.onmessage = (event) => { 
-      console.log("event ", event);
-      let messages = [];
-      messages = this.state.messages.concat(JSON.parse(event.data));
+      console.log('papercut', event)
+      const message =JSON.parse(event.data)
+      console.log('these walls', message, 'what i need', message.type)
+      //Need to have the previous username show up in UserA and the new username in UserB
+      switch(message.type) {
+        case 'postMessage':
+          message.type = 'incomingMessage';
+          message.username = this.state.currentUser.name
+          break;
+        case 'postNotification':
+          message.type = 'incomingNotification';
+          message.content = this.state.currentUser.name + ' changed their name to ' + message.username;
+          break;
+        default:
+          // throw new Error ('Unknown type' + messages.type);
+      }
+      const messages = this.state.messages.concat(message);      
+      console.log('goat mouth nanny pappy', message)
       this.setState({
-        messages: messages
+        messages
       })
     }
   }

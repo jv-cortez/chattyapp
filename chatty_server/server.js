@@ -21,11 +21,10 @@ wss.on('connection', (ws) => {
   console.log('Client connected');
 
   ws.on('message', (message) => {
-    const messageInObject = JSON.parse(message)
-    
-    messageInObject.id = uuidv4()
-    
-    wss.broadcast(JSON.stringify(messageInObject))
+    console.log('we want the funk', message)
+    const incomingClientMessage = JSON.parse(message);
+    incomingClientMessage.id = uuidv4();  
+    wss.broadcast(JSON.stringify(incomingClientMessage));
   });
 
   // Set up a callback for when a client closes the socket. This usually means they closed their browser.

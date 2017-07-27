@@ -13,6 +13,9 @@ class MessageList extends Component {
         return (
             <main className="messages">
                 {posts}
+                <div className="message system">
+                      {this.props.content}  
+                </div>
             </main>
 
         )
