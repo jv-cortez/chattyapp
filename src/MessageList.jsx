@@ -7,7 +7,8 @@ class MessageList extends Component {
             return <Message
                 key={index}
                 username={post.username}
-                content={post.content} />
+                content={post.content} 
+                />
         });
         return (
             <main className="messages">
