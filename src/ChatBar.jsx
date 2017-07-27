@@ -4,7 +4,7 @@ class ChatBar extends Component {
   constructor(){
     super();
     this.state = {
-      user:'',
+      user:'Anonymous',
       content:''
     }
     this.onContent = this.onContent.bind(this)
@@ -21,6 +21,9 @@ class ChatBar extends Component {
     const enterPressed = keyPressed.key
     if (enterPressed === 'Enter') {
       this.props.onNewPost('postMessage',this.state.user, this.state.content);
+      this.setState({
+        content:''
+      })
     }
   }
   onUserContent(event) {
@@ -49,6 +52,7 @@ class ChatBar extends Component {
               onInput={this.onContent}
               onKeyUp={this.onPost}
               placeholder="Type a message and hit ENTER"
+              value={this.state.content}
             />
         </footer>
       </div>
