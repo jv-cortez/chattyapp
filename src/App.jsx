@@ -13,7 +13,8 @@ class App extends Component {
     super();
     this.state = {
       currentUser: {name:'Anonymous'},
-      messages: []
+      messages: [],
+      usersConnected: 0 
     };
     this.addMessage = this.addMessage.bind(this);
   }
@@ -38,6 +39,11 @@ class App extends Component {
           //will always say anonymous changed their name to.. instead of referring to the past name
           message.content = this.state.currentUser.name + ' changed their name to ' + message.username;
           break;
+        case 'updateUserCount':
+          this.setState({
+            usersConnected: message.count
+          })
+          break;
         default:
           throw new Error ('Unknown type' + message.type);
       }
@@ -52,7 +58,7 @@ class App extends Component {
       <div>
         <nav className="navbar">
             <a href="/" className="navbar-brand">Chatty</a>
-            <p className="userCount"> X Users online</p>
+            <p className="userCount"> {this.state.usersConnected} People online</p>
         </nav>
         <MessageList posts= {this.state.messages} />
         <ChatBar 
