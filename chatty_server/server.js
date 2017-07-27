@@ -15,9 +15,10 @@ const server = express()
 const wss = new SocketServer({ server });
 //const clients = [];
 function updateUserCount(count) {
+  //Added console.log in order to see client count in terminal
   console.log('count', count)
   const userUpdate = {
-    type: "updateUserCount",
+    type: 'updateUserCount',
     count: count
   }
   wss.broadcast(userUpdate)
