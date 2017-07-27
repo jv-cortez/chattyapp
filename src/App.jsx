@@ -26,10 +26,7 @@ class App extends Component {
   componentDidMount() {
     this.ws = new WebSocket ('ws://localhost:3001');
     this.ws.onmessage = (event) => { 
-      console.log('papercut', event)
       const message =JSON.parse(event.data)
-      console.log('these walls', message, 'what i need', message.type)
-      //Need to have the previous username show up in UserA and the new username in UserB
       switch(message.type) {
         case 'postMessage':
           message.type = 'incomingMessage';
@@ -40,10 +37,9 @@ class App extends Component {
           message.content = this.state.currentUser.name + ' changed their name to ' + message.username;
           break;
         default:
-          // throw new Error ('Unknown type' + messages.type);
+          throw new Error ('Unknown type' + message.type);
       }
       const messages = this.state.messages.concat(message);      
-      console.log('goat mouth nanny pappy', message)
       this.setState({
         messages
       })
