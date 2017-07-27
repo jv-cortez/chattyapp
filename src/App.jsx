@@ -1,18 +1,17 @@
 import React, {Component} from 'react';
 import MessageList from './MessageList.jsx';
 import ChatBar from './ChatBar.jsx';
-//need to add anonymous label if a username isn't provided
-//add api??? emojis???
-//change color. this type of orange is gross
+//add api??? emojis??? able to add imgs, figure out location
 // should scroll down when messages are at the end of the page
-//content should after pressing enter in the content input
+//content should delete after pressing enter in the content input
+//set interval message that loads after 5 secs when the user connects 
 
 class App extends Component {
   
   constructor() {
     super();
     this.state = {
-      currentUser: {name:'Anonymous'},
+      currentUser: {name:''},
       messages: [],
       usersConnected: 0 
     };
@@ -24,6 +23,7 @@ class App extends Component {
       username: username,
       content: content
     }
+
     this.ws.send(JSON.stringify(message)); //client message
   }
   componentDidMount() {
@@ -36,7 +36,6 @@ class App extends Component {
           break;
         case 'postNotification':
           message.type = 'incomingNotification';
-          //will always say anonymous changed their name to.. instead of referring to the past name
           message.content = this.state.currentUser.name + ' changed their name to ' + message.username;
           break;
         case 'updateUserCount':
