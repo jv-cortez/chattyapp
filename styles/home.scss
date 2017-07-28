@@ -9,7 +9,9 @@ body {
   font-size: 14px;
   margin: 70px 0;
 }
-
+.messages{
+  padding-bottom: 0px;
+}
 .chatbar {
   background: $bg-color;
   border-top: 1px solid black;
@@ -20,7 +22,6 @@ body {
   position: fixed;
   right: 0;
 }
-
 .chatbar-message,
 .chatbar-username {
   border: 1px solid black;
@@ -30,41 +31,35 @@ body {
   margin: 5px;
   padding: 0 9px;
 }
-
 .chatbar-message {
+  border-radius: 5px;
   flex: 8;
 }
-
 .chatbar-username {
+  border-radius: 5px;
   flex: 2;
 }
-
 .message {
   display: flex;
   padding: 5px;
 }
-
 .message.system {
   font-style: italic;
   padding: 5px 20px;
 }
-
 .message-content,
 .message-username {
-  overflow: hidden;
+  overflow: visible;
   margin: 5px;
   padding: 0 10px;
 }
-
 .message-content {
   flex: 8;
 }
-
 .message-username {
   flex: 2;
   font-weight: 700;
 }
-
 .navbar {
   background: $bg-color;
   border-bottom: 1px solid black;
@@ -75,7 +70,6 @@ body {
   right: 0;
   top: 0;
 }
-
 .navbar-brand {
   color: inherit;
   display: block;
@@ -90,5 +84,6 @@ body {
 .navbar .userCount{
   //need to make it in the middle  
   display: flex;
-  justify-content: flex-end
+  justify-content: flex-end;
+  line-height: 32px;
 }
