@@ -2,9 +2,8 @@ import React, {Component} from 'react';
 import MessageList from './MessageList.jsx';
 import ChatBar from './ChatBar.jsx';
 //add api??? emojis??? able to add imgs, figure out location
-// should scroll down when messages are at the end of the page
-//content should delete after pressing enter in the content input
-
+// should scroll down when messages are at the end of the page, there is some extra space behind the chatbar that users can scroll down to
+//mysterious empty div shows up near the top
 class App extends Component {
   
   constructor() {
@@ -70,8 +69,8 @@ class App extends Component {
     return (
       <div>
         <nav className="navbar">
-            <a href="/" className="navbar-brand">Chatty</a>
-            <p className="userCount"> People online: {this.state.usersConnected}</p>
+          <a href="/" className="navbar-brand">Chatty</a>
+          <p className="userCount"> People online: {this.state.usersConnected}</p>
         </nav>
         <MessageList posts= {this.state.messages} />
         <ChatBar 
