@@ -14,7 +14,7 @@ class MessageList extends Component {
             <main className="messages">
                 {posts}
                 <div className="message system">
-                      {this.props.content}  
+                    {this.props.content}  
                 </div>
             </main>
 
