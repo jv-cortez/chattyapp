@@ -24,6 +24,7 @@ class ChatBar extends Component {
       this.setState({
         content:''
       })
+      window.scrollTo(0,document.body.scrollHeight);
     }
   }
   onUserContent(event) {
