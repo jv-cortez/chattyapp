@@ -10,7 +10,7 @@ body {
   margin: 70px 0;
 }
 .messages{
-  padding-bottom: 0px;
+  padding-bottom: 10px;
 }
 .chatbar {
   background: $bg-color;
@@ -82,7 +82,6 @@ body {
   text-decoration: none;
 }
 .navbar .userCount{
-  //need to make it in the middle  
   display: flex;
   justify-content: flex-end;
   line-height: 32px;
