@@ -22,15 +22,14 @@ class App extends Component {
       username: username,
       content: content
     }
-
     this.ws.send(JSON.stringify(message)); //client message
   }
   componentDidMount() {
     this.setState({
       messages:[{
-        type:'1stMessage',
-        username: 'Bot',
-        content: 'Welcome to hell!'
+        type:'welcomeMessage',
+        username: 'ChattyBot',
+        content: 'Welcome to Chatty! You\'re Anonymous for now, but you can change that in the \'Username here\' box!'
       }]
     })
     this.ws = new WebSocket ('ws://localhost:3001');
@@ -72,7 +71,7 @@ class App extends Component {
       <div>
         <nav className="navbar">
             <a href="/" className="navbar-brand">Chatty</a>
-            <p className="userCount"> {this.state.usersConnected} People online</p>
+            <p className="userCount"> People online: {this.state.usersConnected}</p>
         </nav>
         <MessageList posts= {this.state.messages} />
         <ChatBar 
