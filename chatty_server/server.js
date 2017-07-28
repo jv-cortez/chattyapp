@@ -13,7 +13,6 @@ const server = express()
 
 // Create the WebSockets server
 const wss = new SocketServer({ server });
-//const clients = [];
 function updateUserCount(count) {
   //Added console.log in order to see client count in terminal
   console.log('count', count)
@@ -23,12 +22,24 @@ function updateUserCount(count) {
   }
   wss.broadcast(userUpdate)
 }
+
+ function userDisconnected(count) {
+  //Added console.log in order to see client count in terminal
+  console.log('count', count)
+  const userUpdate = {
+    type: 'userDisconnected',
+    username: 'ChattyBot',
+    content: 'A User left!',
+    count: count
+  }
+  wss.broadcast(userUpdate)
+}
 // Set up a callback that will run when a client connects to the server
 // When a client connects they are assigned a socket, represented by
 // the ws parameter in the callback.
 wss.on('connection', (ws) => {
-  //clients.push(ws)
   console.log('Client connected');
+  
   //after logging number of clients on App.jsx, add notifications everytime there is a new client connection " new user connected"
   updateUserCount(wss.clients.size)
   ws.on('message', (message) => {
@@ -40,7 +51,7 @@ wss.on('connection', (ws) => {
   // Set up a callback for when a client closes the socket. This usually means they closed their browser.
   ws.on('close', () => {
     console.log('Client disconnected')
-    updateUserCount(wss.clients.size)
+    userDisconnected(wss.clients.size)
   });
 });
 
@@ -52,4 +63,3 @@ wss.broadcast = function broadcast(data) {
     }
   });
 };
-//broadcast current user count and when a client disconnects
