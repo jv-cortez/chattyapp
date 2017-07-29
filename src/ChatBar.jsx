@@ -1,16 +1,25 @@
 import React, {Component} from 'react';
 
 class ChatBar extends Component {
-  constructor(){
+  constructor() {
     super();
     this.state = {
       user:'Anonymous',
-      content:''
+      content:'',
+      color:''
     }
-    this.onContent = this.onContent.bind(this)
-    this.onPost = this.onPost.bind(this)
-    this.onUserContent = this.onUserContent.bind(this)
-    this.onUserPost = this.onUserPost.bind(this)
+    this.handleColorChange=this.handleColorChange.bind(this);
+    this.onContent = this.onContent.bind(this);
+    this.onPost = this.onPost.bind(this);
+    this.onUserContent = this.onUserContent.bind(this);
+    this.onUserPost = this.onUserPost.bind(this);
+  }
+  handleColorChange(event){
+    this.setState({
+      color: event.target.value
+    }, () => {
+      this.props.onNewPost('usernameTextColor', this.state.user,'',this.state.color)
+    });
   }
   onContent(event) {
     this.setState({
@@ -20,7 +29,7 @@ class ChatBar extends Component {
   onPost(keyPressed) {
     const enterPressed = keyPressed.key
     if (enterPressed === 'Enter') {
-      this.props.onNewPost('postMessage',this.state.user, this.state.content);
+      this.props.onNewPost('postMessage',this.state.user, this.state.content, this.state.color);
       this.setState({
         content:''
       })
@@ -35,12 +44,12 @@ class ChatBar extends Component {
   onUserPost(keyPressed) {
     const enterPressed = keyPressed.key;
     if (enterPressed === 'Enter') {
-      this.props.onNewPost('postNotification',this.state.user);
+      this.props.onNewPost('postNotification',this.state.user,'',this.state.color);
     }
   }
   render() {
     return (
-       <div>  
+      <div>  
         <footer className="chatbar">
             <input
               className="chatbar-username"
@@ -48,6 +57,14 @@ class ChatBar extends Component {
               onKeyUp={this.onUserPost}
               placeholder= "Username here"
             />
+              <select className="chatbar-userColorSelect" onChange={this.handleColorChange}>
+              <option defaultValue value="pickAColor">
+              Username color</option>
+              <option value="Red">Red</option>
+              <option value="Purple">Purple</option> 
+              <option value="Orange">Orange</option>
+              <option value="Lime">Lime</option>
+            </select> 
             <input 
               className="chatbar-message" 
               onInput={this.onContent}
