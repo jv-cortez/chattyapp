@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css");
-$bg-color: linear-gradient(335deg, thistle, rebeccapurple);
+$bg-color: linear-gradient(335deg, thistle, rebeccapurple, darkmagenta);
 
 body {
   background: whitesmoke;
@@ -23,8 +23,10 @@ body {
   right: 0;
 }
 .chatbar-message,
-.chatbar-username {
+.chatbar-username,
+.chatbar-userColorSelect {
   border: 1px solid black;
+  border-radius: 5px;
   display: block;
   height: 40px;
   line-height: 40px;
@@ -32,11 +34,9 @@ body {
   padding: 0 9px;
 }
 .chatbar-message {
-  border-radius: 5px;
   flex: 8;
 }
 .chatbar-username {
-  border-radius: 5px;
   flex: 2;
 }
 .message {
@@ -45,7 +45,6 @@ body {
 }
 .message.system {
   font-style: italic;
-  padding: 5px 20px;
 }
 .message-content,
 .message-username {
