@@ -7,7 +7,7 @@ class ChatBar extends Component {
       user:'Anonymous',
       content:'',
       color:''
-    }
+    };
     this.handleColorChange=this.handleColorChange.bind(this);
     this.onContent = this.onContent.bind(this);
     this.onPost = this.onPost.bind(this);
@@ -18,28 +18,28 @@ class ChatBar extends Component {
     this.setState({
       color: event.target.value
     }, () => {
-      this.props.onNewPost('usernameTextColor', this.state.user,'',this.state.color)
+      this.props.onNewPost('usernameTextColor', this.state.user,'',this.state.color);
     });
   }
   onContent(event) {
     this.setState({
       content: event.target.value
-    })
+    });
   }
   onPost(keyPressed) {
-    const enterPressed = keyPressed.key
+    const enterPressed = keyPressed.key;
     if (enterPressed === 'Enter') {
       this.props.onNewPost('postMessage',this.state.user, this.state.content, this.state.color);
       this.setState({
         content:''
-      })
+      });
       window.scrollTo(0,document.body.scrollHeight);
     }
   }
   onUserContent(event) {
     this.setState({
       user: event.target.value,
-    })
+    });
   }
   onUserPost(keyPressed) {
     const enterPressed = keyPressed.key;
@@ -74,7 +74,7 @@ class ChatBar extends Component {
             />
         </footer>
       </div>
-    )
+    );
   }
 }
 export default ChatBar;
