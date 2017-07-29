@@ -11,7 +11,7 @@ class Message extends Component {
                     <span className="message-content">
                         {this.props.content}</span>
                 </div>
-            )
+            );
         } else {
             return (
                 <div className="message system">
@@ -21,9 +21,8 @@ class Message extends Component {
                     <span className="message-content">
                         {this.props.content}</span>
                 </div>
-            )
+            );
         }
     }
 }
-
 export default Message;
