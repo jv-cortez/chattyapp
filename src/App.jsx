@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import MessageList from './MessageList.jsx';
 import ChatBar from './ChatBar.jsx';
-// should scroll down when messages are at the end of the page, there is some extra space behind the chatbar that users can scroll down to
+
 class App extends Component {
   constructor() {
     super();
