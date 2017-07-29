@@ -6,7 +6,7 @@ end library created and used heavily by Facebook as well as modern tools for Nod
 
 ### Screenshots
 
-![Home page](https://github.com/jv-cortez/chattyapp/blob/master/docs/homepage.png"Home Page")
+![Home page](https://github.com/jv-cortez/chattyapp/blob/master/docs/homepage.png)
 ![Color & Username Change](https://github.com/jv-cortez/chattyapp/blob/master/docs/functions.png)
 ![Chat & User count](https://github.com/jv-cortez/chattyapp/blob/master/docs/chatfunctionsWithusercount.png)
 
