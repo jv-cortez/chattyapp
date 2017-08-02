@@ -33,7 +33,7 @@ class App extends Component {
     this.ws = new WebSocket ('ws://localhost:3001');
     //receives message from the server
     this.ws.onmessage = (event) => { 
-      const message =JSON.parse(event.data);
+      const message = JSON.parse(event.data);
       switch(message.type) {
         case 'postMessage':
           message.type = 'incomingMessage';
@@ -77,12 +77,12 @@ class App extends Component {
         <nav className="navbar">
           <a href="/" className="navbar-brand">Chatty</a>
           <p className="userCount"> 
-          People online: {this.state.usersConnected}</p>
+          People online: { this.state.usersConnected }</p>
         </nav>
-        <MessageList posts= {this.state.messages} />
+        <MessageList posts= { this.state.messages } />
         <ChatBar 
-          userName={this.state.currentUser.name}
-          onNewPost={this.addMessage} 
+          userName={ this.state.currentUser.name }
+          onNewPost={ this.addMessage } 
         />
       </div>
     );
