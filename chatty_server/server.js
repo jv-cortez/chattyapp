@@ -13,8 +13,6 @@ const wss = new SocketServer({ server });
 
 //updates user count when client connects to the server
 function updateUserCount(count) {
-  //Added console.log in order to see client count in terminal
-  console.log('count', count);
   const userUpdate = {
     type: 'updateUserCount',
     username: 'ChattyBot',
@@ -25,8 +23,6 @@ function updateUserCount(count) {
 }
 //updates user count when user disconnects from server
 function userDisconnected(count) {
-  //Added console.log in order to see client count in terminal
-  console.log('count', count);
   const userUpdate = {
     type: 'userDisconnected',
     username: 'ChattyBot',
