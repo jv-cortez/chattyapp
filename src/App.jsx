@@ -12,6 +12,7 @@ class App extends Component {
     };
     this.addMessage = this.addMessage.bind(this);
   }
+  //creates message variable from the chatbar input
   addMessage(type, username, content, color) {
     const message = {
       type: type,
@@ -30,6 +31,7 @@ class App extends Component {
       }]
     });
     this.ws = new WebSocket ('ws://localhost:3001');
+    //receives message from the server
     this.ws.onmessage = (event) => { 
       const message =JSON.parse(event.data);
       switch(message.type) {
