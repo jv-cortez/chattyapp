@@ -1,8 +1,13 @@
-ChattyApp
+Chatty App
 =====================
 
-Chatty will allow users to communicate with each other without having to register accounts. It will use React, a popular front-
-end library created and used heavily by Facebook as well as modern tools for Node including Webpack and Babel.
+Chatty project to practice building web applications that have real-time functionality where users do not have to reload the page in order to see updates.Chatty will allow users to communicate with each other without having to register accounts. It will use React, a popular front-end library created and used heavily by Facebook as well as modern tools for Node including Webpack and Babel. 
+
+This Chatty app contains basic functions such as:
+*Sending messages to a chat room
+*User able to change user name
+*User able to change username text color from a select box
+*App able to detect and count users connecting and disconnecting from the chat room
 
 ### Getting Started
 
