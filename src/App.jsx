@@ -74,15 +74,15 @@ class App extends Component {
   render() {
     return (
       <div>
-        <nav className="navbar">
-          <a href="/" className="navbar-brand">Chatty</a>
-          <p className="userCount"> 
+        <nav className = "navbar">
+          <a href = "/" className = "navbar-brand">Chatty</a>
+          <p className = "userCount"> 
           People online: { this.state.usersConnected }</p>
         </nav>
-        <MessageList posts= { this.state.messages } />
+        <MessageList posts = { this.state.messages } />
         <ChatBar 
-          userName={ this.state.currentUser.name }
-          onNewPost={ this.addMessage } 
+          userName = { this.state.currentUser.name }
+          onNewPost = { this.addMessage } 
         />
       </div>
     );
