@@ -8,7 +8,7 @@ class ChatBar extends Component {
       content:'',
       color:''
     };
-    this.handleColorChange=this.handleColorChange.bind(this);
+    this.handleColorChange = this.handleColorChange.bind(this);
     this.onContent = this.onContent.bind(this);
     this.onPost = this.onPost.bind(this);
     this.onUserContent = this.onUserContent.bind(this);
@@ -56,27 +56,27 @@ class ChatBar extends Component {
   render() {
     return (
       <div>  
-        <footer className="chatbar">
+        <footer className = "chatbar">
             <input
-              className="chatbar-username"
-              onInput={this.onUserContent}
-              onKeyUp={this.onUserPost}
-              placeholder= "Username here"
+              className = "chatbar-username"
+              onInput = { this.onUserContent }
+              onKeyUp = { this.onUserPost }
+              placeholder = "Username here"
             />
-              <select className="chatbar-userColorSelect" onChange={this.handleColorChange}>
-              <option defaultValue value="pickAColor">
+              <select className = "chatbar-userColorSelect" onChange = { this.handleColorChange }>
+              <option defaultValue value = "pickAColor">
               Username color</option>
-              <option value="Red">Red</option>
-              <option value="Purple">Purple</option> 
-              <option value="Orange">Orange</option>
-              <option value="Lime">Lime</option>
+              <option value = "Red">Red</option>
+              <option value = "Purple">Purple</option> 
+              <option value = "Orange">Orange</option>
+              <option value = "Lime">Lime</option>
             </select> 
             <input 
-              className="chatbar-message" 
-              onInput={this.onContent}
-              onKeyUp={this.onPost}
-              placeholder="Type a message and hit ENTER"
-              value={this.state.content}
+              className = "chatbar-message" 
+              onInput = { this.onContent }
+              onKeyUp = { this.onPost }
+              placeholder = "Type a message and hit ENTER"
+              value = { this.state.content }
             />
         </footer>
       </div>
