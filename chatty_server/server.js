@@ -36,6 +36,7 @@ wss.on('connection', (ws) => {
   
   updateUserCount(wss.clients.size);
   
+  //accepts message from client side App file and adds uuid id and then brodcasts it back to the App file
   ws.on('message', (message) => {
     const incomingClientMessage = JSON.parse(message);
     incomingClientMessage.id = uuidv4();  
